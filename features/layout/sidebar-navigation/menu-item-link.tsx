@@ -22,7 +22,11 @@ export function MenuItemLink({
     <li className={classNames(styles.listItem, isActive && styles.active)}>
       <Link className={styles.anchor} href={href}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className={styles.icon} src={iconSrc} alt={`${text} icon`} />{" "}
+        <img
+          className={`${styles.arrowIcon} ${isCollapsed ? styles.rotate : ""}`}
+          src={iconSrc}
+          alt={`${text} icon`}
+        />{" "}
         {!isCollapsed && text}
       </Link>
     </li>
