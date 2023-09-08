@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-namespace */
+
 describe("Sidebar Navigation", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000/dashboard");
