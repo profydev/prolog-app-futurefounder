@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-namespace */
+
 describe("Sidebar Navigation", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000/dashboard");
@@ -42,8 +44,24 @@ describe("Sidebar Navigation", () => {
       // check that text is not rendered
       cy.get("nav").contains("Issues").should("not.exist");
     });
-  });
 
+    it("support button triggers email", () => {
+      // Stub window.open
+      cy.window().then((win) => {
+        cy.stub(win, "open").as("windowOpen");
+      });
+
+      // Click the support button
+      cy.get("nav").contains("Support").click();
+
+      // Assert that window.open was called with the expected mailto link
+      cy.get("@windowOpen").should(
+        "have.been.calledWith",
+        "mailto:support@prolog-app.com?subject=Support Request:",
+        "_self",
+      );
+    });
+  });
   context("mobile resolution", () => {
     beforeEach(() => {
       cy.viewport("iphone-8");
