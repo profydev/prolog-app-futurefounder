@@ -84,8 +84,10 @@ export function SidebarNavigation() {
               iconSrc="/icons/support.svg"
               isCollapsed={isSidebarCollapsed}
               onClick={() => {
-                window.location.href =
-                  "mailto:support@prolog-app.com?subject=Support Request:";
+                window.open(
+                  "mailto:support@prolog-app.com?subject=Support Request:",
+                  "_self",
+                );
               }}
             />
             <MenuItemButton

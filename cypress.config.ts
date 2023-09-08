@@ -10,5 +10,13 @@ export default defineConfig({
     setupNodeEvents() {
       // implement node event listeners here
     },
+    aseUrl: "http://localhost:3000",
+  },
+
+  component: {
+    devServer: {
+      framework: "next",
+      bundler: "webpack",
+    },
   },
 });
