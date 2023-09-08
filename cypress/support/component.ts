@@ -27,6 +27,7 @@ import { mount } from "cypress/react18";
 // your custom command.
 // Alternatively, can be defined in cypress/support/component.d.ts
 // with a <reference path="./component" /> at the top of your spec.
+// eslint-disable-next-line @typescript-eslint/no-namespace
 declare global {
   namespace Cypress {
     interface Chainable {
@@ -34,6 +35,7 @@ declare global {
     }
   }
 }
+// eslint-enable-next-line @typescript-eslint/no-namespace
 
 Cypress.Commands.add("mount", mount);
 
