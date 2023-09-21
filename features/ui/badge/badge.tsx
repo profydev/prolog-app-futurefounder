@@ -8,14 +8,13 @@ export enum BadgeSize {
   lg = "lg",
 }
 
-
 export enum BadgeColor {
   primary = "primary",
   gray = "gray",
   critical = "critical",
   warning = "warning",
   success = "success",
-  error = "error"
+  error = "error",
 }
 
 type BadgeProps = {
