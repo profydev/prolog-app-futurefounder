@@ -50,4 +50,9 @@
     background: color.$success-50;
     color: color.$success-700;
   }
+
+  &.critical {
+    background: color.$error-50;
+    color: color.$error-700;
+  }
 }

@@ -17,9 +17,9 @@ const languageNames = {
 };
 
 const statusColors = {
-  [ProjectStatus.stable]: BadgeColor.success,
+  [ProjectStatus.error]: BadgeColor.critical,
   [ProjectStatus.warning]: BadgeColor.warning,
-  [ProjectStatus.critical]: BadgeColor.error,
+  [ProjectStatus.info]: BadgeColor.success,
 };
 
 export function ProjectCard({ project }: ProjectCardProps) {
@@ -50,7 +50,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <div className={styles.issuesNumber}>{numEvents24h}</div>
           </div>
           <div className={styles.status}>
-            <Badge color={statusColors[status]}>{capitalize(status)}</Badge>
+            <Badge color={statusColors[status]}>
+              {status === "error"
+                ? "Critical"
+                : status === "info"
+                ? "Stable"
+                : capitalize(status)}
+            </Badge>
           </div>
         </div>
       </div>

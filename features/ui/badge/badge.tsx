@@ -11,7 +11,7 @@ export enum BadgeSize {
 export enum BadgeColor {
   primary = "primary",
   gray = "gray",
-  error = "error",
+  critical = "critical",
   warning = "warning",
   success = "success",
 }
