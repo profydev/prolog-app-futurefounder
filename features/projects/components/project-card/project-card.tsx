@@ -16,7 +16,7 @@ const languageNames = {
   [ProjectLanguage.python]: "Python",
 };
 
-const statusColors = {
+const statusColors: { [key in ProjectStatus]?: BadgeColor } = {
   [ProjectStatus.error]: BadgeColor.critical,
   [ProjectStatus.warning]: BadgeColor.warning,
   [ProjectStatus.info]: BadgeColor.success,
