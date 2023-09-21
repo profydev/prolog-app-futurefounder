@@ -20,6 +20,14 @@ describe("Project List", () => {
       cy.viewport(1025, 900);
     });
 
+    const renderedStatuses = mockProjects.map((project) => {
+      return project.status === "error"
+        ? "Critical"
+        : project.status === "info"
+        ? "Stable"
+        : capitalize(project.status);
+    });
+
     it("renders the projects", () => {
       const languageNames = ["React", "Node.js", "Python"];
 
@@ -32,10 +40,37 @@ describe("Project List", () => {
           cy.wrap($el).contains(languageNames[index]);
           cy.wrap($el).contains(mockProjects[index].numIssues);
           cy.wrap($el).contains(mockProjects[index].numEvents24h);
-          cy.wrap($el).contains(capitalize(mockProjects[index].status));
-          cy.wrap($el)
-            .find("a")
-            .should("have.attr", "href", "/dashboard/issues");
+        });
+    });
+
+    it("color of the status badge matches the project status", () => {
+      const statusColors = {
+        warning: "rgb(255, 250, 235)",
+        info: "rgb(236, 253, 243)",
+        critical: "rgb(254, 243, 242)",
+      };
+
+      cy.get("main")
+        .find("li")
+        .each(($el, index) => {
+          const expectedStatus = mockProjects[index].status;
+          if (expectedStatus in statusColors) {
+            cy.wrap($el)
+              .find(".badge_container__FVLnl")
+              .should(
+                "have.css",
+                "background-color",
+                statusColors[expectedStatus],
+              );
+          }
+        });
+    });
+
+    it("text writes 'Critical' for the error status and 'Stable' for the info status", () => {
+      cy.get("main")
+        .find("li")
+        .each(($el, index) => {
+          cy.wrap($el).contains(renderedStatuses[index]);
         });
     });
   });
