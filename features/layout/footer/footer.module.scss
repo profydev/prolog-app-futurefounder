@@ -1,0 +1,81 @@
+// scss-lint:disable MediaFeatureRange
+
+@use "@styles/color";
+@use "@styles/space";
+@use "@styles/font";
+
+.linkStyle {
+  color: color.$gray-500;
+  text-decoration: none;
+}
+
+.footerContainer {
+  background: color.$gray-50;
+}
+
+.footerContent {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: space.$s3 space.$s3 space.$s3 space.$s3;
+  font-size: space.$s4;
+
+  @media (width <= 768px) {
+    flex-direction: column;
+    align-items: center;
+    padding: space.$s6 space.$s6 space.$s6 space.$s6;
+    font-size: space.$s4;
+  }
+}
+
+.footerText {
+  margin: space.$s0 space.$s0 space.$s0 space.$s4;
+  color: color.$gray-400;
+  text-align: left;
+
+  @media (width <= 768px) {
+    order: 3;
+    text-align: center;
+    margin: space.$s6;
+  }
+}
+
+.footerLinks {
+  display: flex;
+  color: color.$gray-500;
+  font: font.$text-md-medium;
+  margin: space.$s0 space.$s0 space.$s0 space.$s1;
+  text-align: center;
+
+  @media (width <= 768px) {
+    order: 1;
+    margin: space.$s0;
+  }
+}
+
+.footerLink {
+  margin: space.$s0 space.$s4 space.$s0 space.$s0;
+}
+
+.footerLogoWrap {
+  padding: space.$s1;
+  text-align: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (width <= 768px) {
+    order: 2;
+    text-align: center;
+    margin-top: space.$s6 space.$s0 space.$s6 space.$s0;
+  }
+}
+
+.footerLogo {
+  margin-right: space.$s8;
+
+  @media (width <= 768px) {
+    margin: space.$s6 space.$s0 space.$s0 space.$s0;
+  }
+}
