@@ -1,3 +1,5 @@
+// scss-lint:disable MediaFeatureRange
+
 @use "@styles/color";
 @use "@styles/space";
 @use "@styles/font";
@@ -19,7 +21,7 @@
   padding: space.$s3 space.$s3 space.$s3 space.$s3;
   font-size: space.$s4;
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     flex-direction: column;
     align-items: center;
     padding: space.$s6 space.$s6 space.$s6 space.$s6;
@@ -32,10 +34,10 @@
   color: color.$gray-400;
   text-align: left;
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     order: 3;
     text-align: center;
-    margin-left: space.$s0;
+    margin: space.$s6;
   }
 }
 
@@ -46,7 +48,7 @@
   margin: space.$s0 space.$s0 space.$s0 space.$s1;
   text-align: center;
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     order: 1;
     margin: space.$s0;
   }
@@ -63,7 +65,7 @@
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     order: 2;
     text-align: center;
     margin-top: space.$s6 space.$s0 space.$s6 space.$s0;
@@ -73,7 +75,7 @@
 .footerLogo {
   margin-right: space.$s8;
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     margin: space.$s6 space.$s0 space.$s0 space.$s0;
   }
 }
