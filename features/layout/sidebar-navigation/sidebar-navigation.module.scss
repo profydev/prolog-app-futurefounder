@@ -130,6 +130,7 @@
 .linkList {
   composes: list;
   flex: 1;
+  margin-right: space.$s3;
 }
 
 .collapseMenuItem {
