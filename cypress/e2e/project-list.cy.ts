@@ -2,6 +2,8 @@ import capitalize from "lodash/capitalize";
 import mockProjects from "../fixtures/projects.json";
 
 describe("Project List", () => {
+  let skipWait = false;
+
   beforeEach(() => {
     // setup request mock
     cy.intercept("GET", "https://prolog-api.profy.dev/project", {
@@ -11,8 +13,10 @@ describe("Project List", () => {
     // open projects page
     cy.visit("http://localhost:3000/dashboard");
 
-    // wait for request to resolve
-    cy.wait("@getProjects");
+    // Conditionally wait for the request to resolve
+    if (!skipWait) {
+      cy.wait("@getProjects");
+    }
   });
 
   context("desktop resolution", () => {
@@ -72,6 +76,27 @@ describe("Project List", () => {
         .each(($el, index) => {
           cy.wrap($el).contains(renderedStatuses[index]);
         });
+    });
+  });
+
+  context("loading screen", () => {
+    before(() => {
+      skipWait = true; // Set the flag to skip waiting
+    });
+
+    after(() => {
+      skipWait = false; // Reset the flag after the test
+    });
+    it("should display the loading screen while fetching data", () => {
+      // Don't wait for the API to resolve yet, check for spinner immediately
+      // cy.wait(500);
+      cy.get(".spinner_spinnerCircle__UXPFN").should("be.visible");
+
+      // Now wait for API to resolve
+      cy.wait("@getProjects");
+
+      // Check if the loading spinner is no longer displayed
+      cy.get(".spinner_spinnerCircle__UXPFN").should("not.exist");
     });
   });
 });
