@@ -99,4 +99,48 @@ describe("Project List", () => {
       cy.get(".spinner_spinnerCircle__UXPFN").should("not.exist");
     });
   });
+
+  context("error handling", () => {
+    beforeEach(() => {
+      // Mock a failed request
+      cy.intercept("GET", "https://prolog-api.profy.dev/project", {
+        statusCode: 500,
+        body: {
+          error: "Internal Server Error",
+        },
+      }).as("getProjectsFailed");
+
+      // Visit the dashboard
+      cy.visit("http://localhost:3000/dashboard");
+    });
+
+    it("should display an error message when the request fails", () => {
+      // Wait for the failed request to complete
+      cy.wait("@getProjectsFailed");
+      cy.wait(5000);
+      // Check if the error message is displayed
+      cy.get(".error_alertContainer__EPA7V")
+        .should("be.visible")
+        .and("contain", "There was a problem while loading the project data");
+    });
+    it("should reload data when 'Try again' button is clicked", () => {
+      // Wait for the failed request to complete
+      cy.wait("@getProjectsFailed");
+      cy.get(".spinner_spinnerCircle__UXPFN", { timeout: 60000 }).should(
+        "not.exist",
+      );
+
+      // Mock a successful request for the retry
+      cy.intercept("GET", "https://prolog-api.profy.dev/project", {
+        fixture: "projects.json",
+      }).as("getProjectsRetry");
+      cy.wait(5000);
+      // Click the "Try again" button
+      cy.get("button").contains("Try again").click();
+      // Wait for the new request to complete
+      cy.wait("@getProjectsRetry").its("response.statusCode").should("eq", 200);
+
+      // Add any additional assertions to verify that the data has been reloaded in the UI
+    });
+  });
 });

@@ -1,11 +1,13 @@
+import { useState, useEffect } from "react";
 import { ProjectCard } from "../project-card";
 import { useGetProjects } from "../../api/use-get-projects";
-import { Spinner } from "@features/ui";
-
+import { Spinner, ErrorComponent } from "@features/ui";
 import styles from "./project-list.module.scss";
 
 export function ProjectList() {
+  const [trigger, setTrigger] = useState(0);
   const { data, isLoading, isError, error } = useGetProjects();
+  const reload = () => setTrigger((prev) => prev + 1);
 
   if (isLoading) {
     return <Spinner />;
@@ -13,7 +15,7 @@ export function ProjectList() {
 
   if (isError) {
     console.error(error);
-    return <div>Error: {error.message}</div>;
+    return <ErrorComponent onRetry={reload} />;
   }
 
   return (
