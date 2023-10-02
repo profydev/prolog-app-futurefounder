@@ -11,6 +11,7 @@ export function ProjectList() {
 
   if (isLoading) {
     return <Spinner />;
+    return <Spinner />;
   }
 
   if (isError) {
