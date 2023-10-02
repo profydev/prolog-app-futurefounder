@@ -4,8 +4,6 @@ import mockProjects from "../fixtures/projects.json";
 describe("Project List", () => {
   let skipWait = false;
 
-  let skipWait = false;
-
   beforeEach(() => {
     // setup request mock
     cy.intercept("GET", "https://prolog-api.profy.dev/project", {
@@ -19,23 +17,11 @@ describe("Project List", () => {
     if (!skipWait) {
       cy.wait("@getProjects");
     }
-    // Conditionally wait for the request to resolve
-    if (!skipWait) {
-      cy.wait("@getProjects");
-    }
   });
 
   context("desktop resolution", () => {
     beforeEach(() => {
       cy.viewport(1025, 900);
-    });
-
-    const renderedStatuses = mockProjects.map((project) => {
-      return project.status === "error"
-        ? "Critical"
-        : project.status === "info"
-        ? "Stable"
-        : capitalize(project.status);
     });
 
     const renderedStatuses = mockProjects.map((project) => {
@@ -126,11 +112,11 @@ describe("Project List", () => {
 
   context("loading screen", () => {
     before(() => {
-      skipWait = true; // Set the flag to skip waiting
+      skipWait = true;
     });
 
     after(() => {
-      skipWait = false; // Reset the flag after the test
+      skipWait = false;
     });
     it("should display the loading screen while fetching data", () => {
       // Don't wait for the API to resolve yet, check for spinner immediately
@@ -155,7 +141,6 @@ describe("Project List", () => {
         },
       }).as("getProjectsFailed");
 
-      // Visit the dashboard
       cy.visit("http://localhost:3000/dashboard");
     });
 
@@ -180,12 +165,8 @@ describe("Project List", () => {
         fixture: "projects.json",
       }).as("getProjectsRetry");
       cy.wait(5000);
-      // Click the "Try again" button
       cy.get("button").contains("Try again").click();
-      // Wait for the new request to complete
       cy.wait("@getProjectsRetry").its("response.statusCode").should("eq", 200);
-
-      // Add any additional assertions to verify that the data has been reloaded in the UI
     });
   });
 });
