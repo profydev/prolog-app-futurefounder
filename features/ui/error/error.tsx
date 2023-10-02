@@ -1,6 +1,10 @@
 import styles from "./error.module.scss";
 
-export function ErrorComponent({ onRetry }) {
+interface ErrorComponentProps {
+  onRetry: () => void;
+}
+
+export const ErrorComponent: React.FC<ErrorComponentProps> = ({ onRetry }) => {
   return (
     <div className={styles.alertContainer}>
       <div className={styles.contentContainer}>
@@ -55,4 +59,4 @@ export function ErrorComponent({ onRetry }) {
       </div>
     </div>
   );
-}
+};
