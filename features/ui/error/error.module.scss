@@ -1,0 +1,51 @@
+@use "@styles/color";
+@use "@styles/space";
+@use "@styles/font";
+
+.alertContainer {
+  display: flex;
+  align-items: center;
+  border: 1px solid color.$error-300;
+  background-color: color.$error-25;
+  border-radius: space.$s1;
+}
+
+.contentContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin: space.$s3;
+
+  & > svg {
+    flex-shrink: 0;
+  }
+
+  & > div {
+    margin-left: space.$s1;
+  }
+
+  & > button {
+    margin-left: auto;
+    color: color.$error-700;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.contentText {
+  font-size: space.$s3;
+  font-weight: font.$text-md-medium;
+  color: color.$error-700;
+}
+
+.contentLink {
+  display: flex;
+  text-decoration: none;
+  margin-left: space.$s2;
+
+  & > svg {
+    padding-left: space.$s2;
+  }
+}
