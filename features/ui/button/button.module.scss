@@ -1,18 +1,201 @@
+@use "@styles/color";
+@use "@styles/space";
+@use "styles/font";
+
 .button {
   cursor: pointer;
 
   /* remove default button styles */
   border: none;
+  border-radius: space.$s2;
   margin: 0;
-  padding: 0;
-  background: transparent;
+  color: white;
   line-height: normal;
   -webkit-font-smoothing: inherit;
   -moz-osx-font-smoothing: inherit;
   appearance: none;
 
+  &--default {
+    background-color: color.$primary-600;
+  }
+
   &::-moz-focus-inner {
     border: 0;
     padding: 0;
+  }
+
+  // Hover state
+  &--hover {
+    background-color: color.$error-900;
+  }
+
+  // Focus state
+  &--focused {
+    background-color: color.$primary-700;
+    box-shadow: 0 0 0 space.$s1 (color.$primary-100);
+  }
+
+  // Disabled state
+  &--disabled {
+    background-color: color.$primary-200;
+    cursor: not-allowed;
+  }
+
+  &--small {
+    padding: space.$s2 space.$s3;
+    font-size: space.$s3;
+    font-weight: font.$text-xs-medium;
+    line-height: space.$s5;
+  }
+
+  &--medium {
+    padding: space.$s3 space.$s4;
+    font-size: space.$s3;
+    font-weight: font.$text-xs-medium;
+    line-height: space.$s5;
+    gap: space.$s2;
+  }
+
+  &--large {
+    padding: space.$s3 space.$s5;
+    font-size: space.$s4;
+    font-weight: font.$text-xs-medium;
+    line-height: space.$s6;
+    gap: space.$s2;
+  }
+
+  &--xlarge {
+    padding: space.$s4 space.$s6;
+    font-size: space.$s4;
+    font-weight: font.$text-xs-medium;
+    line-height: space.$s6;
+    gap: space.$s2;
+  }
+
+  &--primary {
+    background-color: color.$primary-600;
+    color: white;
+  }
+
+  &--primary--hover {
+    background-color: color.$primary-700;
+  }
+
+  &--primary--focused {
+    background-color: color.$primary-700;
+    box-shadow: 0 0 0 space.$s1 (color.$primary-100);
+  }
+
+  &--primary--disabled {
+    background-color: color.$primary-200;
+    cursor: not-allowed;
+  }
+
+  &--secondary {
+    background-color: color.$primary-50;
+    color: color.$primary-700;
+  }
+
+  &--secondary--hover {
+    background-color: color.$primary-100;
+  }
+
+  &--secondary--focused {
+    background-color: color.$primary-50;
+    box-shadow: 0 0 0 space.$s1 (color.$primary-100);
+  }
+
+  &--secondary--disabled {
+    background-color: color.$primary-25;
+    color: color.$primary-300;
+    cursor: not-allowed;
+  }
+
+  &--gray {
+    background-color: white;
+    box-shadow: 0 0 0 1px (color.$gray-300);
+    color: color.$gray-700;
+  }
+
+  &--gray--hover {
+    background-color: white;
+    color: color.$gray-800;
+  }
+
+  &--gray--focused {
+    border: 1px solid color.$gray-300;
+    background-color: white;
+    color: color.$gray-700;
+    box-shadow: 0 0 0 space.$s1 (color.$gray-100);
+  }
+
+  &--gray--disabled {
+    background-color: white;
+    color: color.$gray-300;
+    cursor: not-allowed;
+  }
+
+  &--empty {
+    background-color: transparent;
+    color: color.$primary-700;
+  }
+
+  &--empty--hover {
+    background-color: color.$primary-50;
+    color: color.$primary-700;
+  }
+
+  &--empty--focused {
+    background-color: transparent;
+    color: color.$primary-700;
+  }
+
+  &--empty--disabled {
+    background-color: transparent;
+    color: color.$gray-300;
+    cursor: not-allowed;
+  }
+
+  &--emptyGray {
+    background-color: transparent;
+    color: color.$gray-500;
+  }
+
+  &--emptyGray--hover {
+    background-color: color.$gray-50;
+    color: color.$gray-600;
+  }
+
+  &--emptyGray--focused {
+    background-color: transparent;
+    color: color.$gray-500;
+  }
+
+  &--emptyGray--disabled {
+    background-color: transparent;
+    color: color.$gray-300;
+    cursor: not-allowed;
+  }
+
+  &--error {
+    background-color: color.$error-600;
+    color: white;
+  }
+
+  &--error--hover {
+    background-color: color.$error-700;
+    color: white;
+  }
+
+  &--error--focused {
+    background-color: color.$error-600;
+    color: white;
+    box-shadow: 0 0 0 space.$s1 (color.$error-100);
+  }
+
+  &--error--disabled {
+    background-color: color.$error-200;
+    color: white;
+    cursor: not-allowed;
   }
 }
