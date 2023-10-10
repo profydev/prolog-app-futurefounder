@@ -34,4 +34,8 @@ module.exports = {
     config.resolve.alias["@typings"] = path.resolve("./typings");
     return config;
   },
+
+  docs: {
+    autodocs: true,
+  },
 };
