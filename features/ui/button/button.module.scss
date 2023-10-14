@@ -2,6 +2,10 @@
 @use "@styles/space";
 @use "styles/font";
 
+@use "@styles/color";
+@use "@styles/space";
+@use "styles/font";
+
 .button {
   cursor: pointer;
   display: flex;
@@ -9,12 +13,18 @@
   justify-content: center;
   border: none;
   border-radius: space.$s2;
+  border-radius: space.$s2;
   margin: 0;
+  color: white;
   color: white;
   line-height: normal;
   -webkit-font-smoothing: inherit;
   -moz-osx-font-smoothing: inherit;
   appearance: none;
+
+  &--default {
+    background-color: color.$primary-600;
+  }
 
   &--default {
     background-color: color.$primary-600;
