@@ -29,13 +29,18 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
   color?: ButtonColor;
   state?: ButtonState;
+  icon?: React.ReactNode;
+  iconPosition?: "leading" | "trailing" | "only";
 }
 
 export function Button({
   size = ButtonSize.medium,
   color = ButtonColor.primary,
   state = ButtonState.default,
+  icon,
+  iconPosition,
   className,
+  children,
   ...props
 }: ButtonProps) {
   const buttonClass = classNames(
@@ -48,5 +53,32 @@ export function Button({
     className,
   );
 
-  return <button {...props} className={buttonClass} />;
+  const renderContent = () => {
+    if (iconPosition === "only") {
+      return icon;
+    }
+    if (iconPosition === "leading") {
+      return (
+        <>
+          {icon}
+          {children}
+        </>
+      );
+    }
+    if (iconPosition === "trailing") {
+      return (
+        <>
+          {children}
+          {icon}
+        </>
+      );
+    }
+    return children;
+  };
+
+  return (
+    <button {...props} className={buttonClass}>
+      {renderContent()}
+    </button>
+  );
 }

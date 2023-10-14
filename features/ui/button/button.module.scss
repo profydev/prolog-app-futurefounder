@@ -4,8 +4,9 @@
 
 .button {
   cursor: pointer;
-
-  /* remove default button styles */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: none;
   border-radius: space.$s2;
   margin: 0;
@@ -42,34 +43,23 @@
   }
 
   &--small {
-    padding: space.$s2 space.$s3;
     font-size: space.$s3;
-    font-weight: font.$text-xs-medium;
-    line-height: space.$s5;
+    font-weight: font.$text-md-regular;
   }
 
   &--medium {
-    padding: space.$s3 space.$s4;
     font-size: space.$s3;
-    font-weight: font.$text-xs-medium;
-    line-height: space.$s5;
-    gap: space.$s2;
+    font-weight: font.$text-md-regular;
   }
 
   &--large {
-    padding: space.$s3 space.$s5;
     font-size: space.$s4;
-    font-weight: font.$text-xs-medium;
-    line-height: space.$s6;
-    gap: space.$s2;
+    font-weight: font.$text-md-regular;
   }
 
   &--xlarge {
-    padding: space.$s4 space.$s6;
     font-size: space.$s4;
-    font-weight: font.$text-xs-medium;
-    line-height: space.$s6;
-    gap: space.$s2;
+    font-weight: font.$text-md-regular;
   }
 
   &--primary {
@@ -197,5 +187,27 @@
     background-color: color.$error-200;
     color: white;
     cursor: not-allowed;
+  }
+}
+
+.icon svg {
+  margin-bottom: space.$s1;
+  vertical-align: middle;
+  margin-right: space.$s1;
+
+  &--small {
+    font-size: space.$s5;
+  }
+
+  &--medium {
+    font-size: space.$s8;
+  }
+
+  &--large {
+    font-size: space.$s8;
+  }
+
+  &--xlarge {
+    font-size: space.$s8;
   }
 }
