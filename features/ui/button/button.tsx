@@ -31,7 +31,6 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   state?: ButtonState;
   icon?: React.ReactNode;
   iconPosition?: "leading" | "trailing" | "only";
-
 }
 
 export function Button({
@@ -40,7 +39,6 @@ export function Button({
   state = ButtonState.default,
   icon,
   iconPosition,
-  className,
   children,
   className,
   ...props
@@ -83,4 +81,4 @@ export function Button({
       {renderContent()}
     </button>
   );
-
+}

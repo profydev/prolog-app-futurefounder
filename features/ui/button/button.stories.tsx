@@ -48,6 +48,10 @@ const Template: StoryFn<typeof Button> = ({
       icon={<FaRegCircle />}
       iconPosition={iconPosition}
     >
+      {children}
+    </Button>
+  </div>
+);
 
 export const Default = Template.bind({});
 Default.args = {
