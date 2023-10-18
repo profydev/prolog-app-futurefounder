@@ -2,7 +2,6 @@
 @use "@styles/space";
 @use "styles/font";
 
-
 .button {
   cursor: pointer;
   display: flex;
@@ -44,11 +43,10 @@
   }
 
   &--small {
-
     font-size: space.$s3;
     font-weight: font.$text-md-regular;
   }
-  
+
   &--medium {
     padding: space.$s3 space.$s4;
     font-size: space.$s3;
@@ -199,8 +197,8 @@
     color: white;
     cursor: not-allowed;
   }
-
 }
+
 .icon svg {
   margin-bottom: space.$s1;
   vertical-align: middle;
