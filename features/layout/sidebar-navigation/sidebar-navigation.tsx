@@ -7,6 +7,7 @@ import { MenuItemButton } from "./menu-item-button";
 import { MenuItemLink } from "./menu-item-link";
 import { Button } from "@features/ui";
 import styles from "./sidebar-navigation.module.scss";
+import { ButtonColor, ButtonSize } from "@features/ui";
 
 const menuItems = [
   { text: "Projects", iconSrc: "/icons/projects.svg", href: Routes.projects },
@@ -100,6 +101,8 @@ export function SidebarNavigation() {
           <ul className={styles.list}>
             <MenuItemButton
               text="Support"
+              color={"emptyGray" as ButtonColor}
+              size={"large" as ButtonSize}
               iconSrc="/icons/support.svg"
               isCollapsed={isSidebarCollapsed}
               onClick={() => {
@@ -111,6 +114,8 @@ export function SidebarNavigation() {
             />
             <MenuItemButton
               text="Collapse"
+              color={"emptyGray" as ButtonColor}
+              size={"large" as ButtonSize}
               iconSrc="/icons/arrow-left.svg"
               isCollapsed={isSidebarCollapsed}
               onClick={() => toggleSidebar()}

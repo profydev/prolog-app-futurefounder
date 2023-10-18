@@ -4,8 +4,9 @@
 
 .button {
   cursor: pointer;
-
-  /* remove default button styles */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: none;
   border-radius: space.$s2;
   margin: 0;
@@ -42,10 +43,8 @@
   }
 
   &--small {
-    padding: space.$s2 space.$s3;
     font-size: space.$s3;
-    font-weight: font.$text-xs-medium;
-    line-height: space.$s5;
+    font-weight: font.$text-md-regular;
   }
 
   &--medium {
@@ -197,5 +196,27 @@
     background-color: color.$error-200;
     color: white;
     cursor: not-allowed;
+  }
+}
+
+.icon svg {
+  margin-bottom: space.$s1;
+  vertical-align: middle;
+  margin-right: space.$s1;
+
+  &--small {
+    font-size: space.$s5;
+  }
+
+  &--medium {
+    font-size: space.$s8;
+  }
+
+  &--large {
+    font-size: space.$s8;
+  }
+
+  &--xlarge {
+    font-size: space.$s8;
   }
 }
