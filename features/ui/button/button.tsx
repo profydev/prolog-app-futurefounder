@@ -1,5 +1,4 @@
 import React, { ButtonHTMLAttributes } from "react";
-import React, { ButtonHTMLAttributes } from "react";
 import classNames from "classnames";
 import styles from "./button.module.scss";
 
@@ -32,6 +31,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   state?: ButtonState;
   icon?: React.ReactNode;
   iconPosition?: "leading" | "trailing" | "only";
+
 }
 
 export function Button({
@@ -42,6 +42,7 @@ export function Button({
   iconPosition,
   className,
   children,
+  className,
   ...props
 }: ButtonProps) {
   const buttonClass = classNames(
@@ -82,4 +83,4 @@ export function Button({
       {renderContent()}
     </button>
   );
-}
+

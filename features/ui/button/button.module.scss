@@ -2,9 +2,6 @@
 @use "@styles/space";
 @use "styles/font";
 
-@use "@styles/color";
-@use "@styles/space";
-@use "styles/font";
 
 .button {
   cursor: pointer;
@@ -13,18 +10,12 @@
   justify-content: center;
   border: none;
   border-radius: space.$s2;
-  border-radius: space.$s2;
   margin: 0;
-  color: white;
   color: white;
   line-height: normal;
   -webkit-font-smoothing: inherit;
   -moz-osx-font-smoothing: inherit;
   appearance: none;
-
-  &--default {
-    background-color: color.$primary-600;
-  }
 
   &--default {
     background-color: color.$primary-600;
@@ -53,23 +44,33 @@
   }
 
   &--small {
+
     font-size: space.$s3;
     font-weight: font.$text-md-regular;
   }
-
+  
   &--medium {
+    padding: space.$s3 space.$s4;
     font-size: space.$s3;
-    font-weight: font.$text-md-regular;
+    font-weight: font.$text-xs-medium;
+    line-height: space.$s5;
+    gap: space.$s2;
   }
 
   &--large {
+    padding: space.$s3 space.$s5;
     font-size: space.$s4;
-    font-weight: font.$text-md-regular;
+    font-weight: font.$text-xs-medium;
+    line-height: space.$s6;
+    gap: space.$s2;
   }
 
   &--xlarge {
+    padding: space.$s4 space.$s6;
     font-size: space.$s4;
-    font-weight: font.$text-md-regular;
+    font-weight: font.$text-xs-medium;
+    line-height: space.$s6;
+    gap: space.$s2;
   }
 
   &--primary {
@@ -198,8 +199,8 @@
     color: white;
     cursor: not-allowed;
   }
-}
 
+}
 .icon svg {
   margin-bottom: space.$s1;
   vertical-align: middle;
